@@ -16,19 +16,31 @@ const fs = require('fs')
 //writing
 
 
-let x = "This is so dark"
+// let x = "This is so dark"
 
-fs.writeFile('./learn/blog34.txt', 'Hello, world', ()=>{
-    console.log('File was written')
-});
+// fs.writeFile('./learn/blog34.txt', 'Hello, world', ()=>{
+//     console.log('File was written')
+// });
 
 //directories
-fs.mkdir('./assets', (err)=>{
-    if(err){
-        console.log(err)
-    }
-    console.log('folder created')
-})
+if(!fs.existsSync('./assets')){
+    
+    fs.mkdir('./assets', (err)=>{
+        if(err){
+            console.log(err)
+        }
+        console.log('folder created')
+    })
+}
+else {
+    fs.rmdir('./assets', (err)=>{
+        if(err){
+            console.log(err)
+        }
+        console.log('folder deleted');
+    })
 
+
+}
 
 //delete files
