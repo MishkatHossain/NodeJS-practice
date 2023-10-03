@@ -2,7 +2,7 @@ const fs = require('fs')
 
 
 
-reading 
+//reading 
 fs.readFile('./learn/blog.txt', (err, data) => {
     if(err){
         console.log(err)
@@ -13,7 +13,7 @@ fs.readFile('./learn/blog.txt', (err, data) => {
 
 console.log("Last line")
 
-writing
+//writing
 
 
 let x = "This is so dark"
@@ -43,7 +43,7 @@ else {
 
 }
 
-delete files
+//delete files
 
     fs.unlink('./learn/blog33.txt',(err)=>{
         if(err){
@@ -51,8 +51,3 @@ delete files
         }
         console.log('file deleted')
     })
-
-
-
-
-
