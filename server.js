@@ -11,12 +11,19 @@ const server = http.createServer((req, res)=>{
     {    
         case '/': 
             path +='index.html'; 
+            res.statusCode = 200;
             break;
         case '/about': 
             path +='about.html'; 
+            res.statusCode = 200;
             break;
+        case '/about-me':  
+            res.statusCode = 301;
+            res.setHeader('location','/about')
+            break;    
         default : 
-            path +='404.html'; 
+            path +='404.html';
+            res.statusCode = 404; 
             break;
     }
 
@@ -24,14 +31,18 @@ const server = http.createServer((req, res)=>{
         if(err)
             console.log(err);
         else
+        {
             res.write(data);
-
+        }
+            
         res.end()
     })
 
 
 
 })
+
+
 
 
 server.listen(3000, 'localhost', () => {
