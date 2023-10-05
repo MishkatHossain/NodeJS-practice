@@ -1,8 +1,26 @@
 const http = require('http')
 const fs = require('fs');
+const _ = require('lodash')
+
+
 
 const server = http.createServer((req, res)=>{
     
+    const num = _.random(0, 20);
+
+    console.log(num);
+
+
+
+
+
+
+
+
+
+
+
+
     res.setHeader('Content-Type', 'Text/html')    
     
     let path = './views/';
@@ -13,14 +31,19 @@ const server = http.createServer((req, res)=>{
             path +='index.html'; 
             res.statusCode = 200;
             break;
+        case '/index': 
+            path +='index.html'; 
+            res.statusCode = 200;
+            break;
         case '/about': 
             path +='about.html'; 
             res.statusCode = 200;
             break;
-        case '/about-me':  
+        case '/about-u':  
             res.statusCode = 301;
             res.setHeader('location','/about')
-            break;    
+            break;
+        
         default : 
             path +='404.html';
             res.statusCode = 404; 
