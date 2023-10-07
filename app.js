@@ -12,27 +12,26 @@ app.listen(3000);
 
 
 app.get('/', (req, res)=>{
-    // res.send('<p> home page of the sharingan</p>');
 
-    res.render('index')
+    const blogs = [
+        {title: 'YashidaCorp', snippet: 'Just let me crushed in piece'},
+        {title: 'One piece', snippet: 'This is One piece of naruto'},
+        {title: 'Realm', snippet: 'Attack on Yajuj Majuj'},
+    ];
+
+
+
+    res.render('index', { title: 'Home', blogs})
 });
 
 app.get('/about', (req, res)=>{
-    // res.send('<p> Shark </p>');
-
-    res.render('about')
+    res.render('about', { title: 'About'})
 });
 
-
-app.get('/about-us', (req, res)=>{
-    res.redirect('./about');
+app.get('/blogs/create', (req, res)=>{
+    res.render('create',{ title: 'Create a new blog'});
 })
-
-app.get('/abouts', (req, res)=>{
-    res.redirect('./about');
-})
-
 
 app.use((req, res)=>{
-    res.status(404).sendFile('./views/404.html', {root: __dirname})
+    res.status(404).render('404', { title: '404'});
 })
