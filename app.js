@@ -16,8 +16,6 @@ app.use(morgan('dev'))
 // middleware and static files
 
 
-
-
 app.get('/', (req, res)=>{
 
     const blogs = [
