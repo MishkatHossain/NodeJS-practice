@@ -8,16 +8,17 @@ const server = http.createServer((req, res)=>{
     
     const num = _.random(0, 20);
 
-    console.log(num);
 
+    // const greet = _.once(() =>{
+    //     console.log('hellow world of zealot')
+    // })
 
-
-
-
-
-
-
-
+    const greet = _.once(()=>{
+        console.log("This is so Dark to handle");
+    })
+    greet();
+    greet();
+        
 
 
 
