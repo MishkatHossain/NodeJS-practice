@@ -17,6 +17,7 @@ app.get('/', (req, res)=>{
         {title: 'YashidaCorp', snippet: 'Just let me crushed in piece'},
         {title: 'One piece', snippet: 'This is One piece of naruto'},
         {title: 'Realm', snippet: 'Attack on Yajuj Majuj'},
+        {title: 'Realm Once', snippet: 'Tom halal'},
     ];
 
 
