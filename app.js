@@ -1,14 +1,16 @@
 const express = require('express');
-const morgan = require('morgan')
+const morgan = require('morgan');
+const mongoose = require('mongoose')
 
 const app = express();
 
 //connect to mongoDB
-const dbURI = 'mongodb+srv://netninja:qwerty1234@nodetuts.mgzrcfl.mongodb.net/?retryWrites=true&w=majority';
 
+// const dbURI = 'mongodb+srv://netninja:qwerty123@nodetuts.mgzrcfl.mongodb.net/node-tuts?retryWrites=true&w=majority';
+// mongoose.connect(dbURI, {userNewUrlParse: true, useUnifiedTopology: true})
+//     .then()
 
 app.set('view engine', 'ejs');
-
 
 app.listen(3000);
 
