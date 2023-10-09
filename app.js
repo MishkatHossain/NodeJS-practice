@@ -2,7 +2,6 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose')
 const Blog = require('./models/blog')
-
 const app = express();
 
 //connect to mongoDB
@@ -12,27 +11,21 @@ const databaseURI = 'mongodb+srv://netninja:qwerty123@nodetuts.mgzrcfl.mongodb.n
 mongoose.connect(databaseURI, { useNewUrlParser:true, useUnifiedTopology: true})
 .then((conn)=>app.listen(3000))
 .catch((err)=>{ console.log(err)});
-    
-
 
 app.set('view engine', 'ejs');
-
 
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(morgan('dev'))
-
 
 //routes
 app.get('/', (req, res)=>{
     res.redirect('/blogs')
 });
 
-
 app.get('/about', (req, res)=>{
     res.render('about', { title: 'About'})
 });
-
 
 //blog routes
 app.get('/blogs', (req,res)=>{
@@ -44,7 +37,6 @@ app.get('/blogs', (req,res)=>{
         console.log(err);
     })
 });
-
 
 app.post('/blogs', (req,res)=>{
 
@@ -61,10 +53,9 @@ app.post('/blogs', (req,res)=>{
 
 app.get('/blogs/:id', (req, res)=>{
     const id =req.params.id;
-    console.log(id);
     Blog.findById(id)
     .then((result)=>{
-        render('details', {blog: result, title: 'Blog Details'});
+        res.render('details', {blog: result, title: 'Blog Details'});
 
     })
     .catch(err=>{
@@ -72,10 +63,21 @@ app.get('/blogs/:id', (req, res)=>{
     })
 })
 
+app.delete('/blogs/:id', (req,res)=>{
+    const id = req.params.id;
+
+    Blog.findByIdAndDelete(id)
+    .then(result=>{
+        res.json({ redirect: '/blogs'})
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+})
 
 
 app.get('/blogs/create', (req, res)=>{
-    res.render('create',{ title: 'Create a new blog'});
+    res.render('create', {title: 'Create a new blog'}) 
 })
 
 app.use((req, res)=>{
